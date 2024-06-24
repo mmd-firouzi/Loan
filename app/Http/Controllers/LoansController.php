@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Users;
 use App\Models\Fund;
 use App\Models\Loan;
+use Illuminate\Support\Facades\DB;
 
 class LoansController extends Controller
 {
@@ -46,5 +47,13 @@ class LoansController extends Controller
         $loan->save();
 
         return redirect()->route('landing.page')->with('success', 'loan application submitted');
+    }
+
+    public function showLoans($id) {
+        $loans = DB::table('loans')
+        ->where('fundId' , '=', $id)
+        ->paginate(10);
+
+        return view('funds.showLoans', compact('loans'));
     }
 }

@@ -25,7 +25,8 @@ Route::post('/users/store', [UsersController::class, 'store'])->name('users.stor
 Route::get('/users/create/{id}', [UsersController::class, 'createUserInFund'])->name('users.storeFundId');
 //route to show fund members
 Route::get('users/showMembers/{id}', [FundsController::class, 'showMembers'])->name('users.showMembers');
-
+//route to show loan
+Route::get('users/showLoans/{id}', [LoansController::class, 'showLoans'])->name('users.showLoans');
 
 
 

@@ -39,6 +39,13 @@
         .button.edit{
             background-color: #2196F3;
         }
+        .button.back {
+            background-color: #757575;
+        }
+        .button.loan {
+            background-color: #01579B;
+        }
+
     </style>
 </head>
 <body>
@@ -85,7 +92,11 @@
             <br>
             <br>
             <br>
-            <a href = "{{route('users.storeFundId', $fund->ID)}}" class="button edit">اضافه کردن عضو جدید</a>
+            <a href = "{{route('users.storeFundId', $fund->ID)}}" class="button ">اضافه کردن عضو جدید</a>
+            <br>
+            <br>
+            <br>
+            <a href = "{{route('users.showLoans', $fund->ID)}}" class="button loan">مشاهده  وام های درخواستی</a>
             <br>
             <br>
                 <form action="{{ route('deleteFund', $fund->ID) }}" method="POST" onsubmit="return confirm('آیا مطمئن هستید؟')">
@@ -95,7 +106,7 @@
             </form>
         </div>
         <br>
-        <a href="{{ route('showFunds') }}" class="button">بازگشت به لیست صندوق‌ها</a>
+        <a href="{{ route('showFunds') }}" class="button back">بازگشت به لیست صندوق‌ها</a>
 
 
     </div>
