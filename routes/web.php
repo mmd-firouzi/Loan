@@ -22,11 +22,11 @@ Route::get('/users/create', [UsersController::class, 'create'])->name('users.cre
 Route::post('/users/store', [UsersController::class, 'store'])->name('users.store');
 
 //route to creating user for specific fund in fund manager
-Route::get('/users/create/{id}', [UsersController::class, 'createUserInFund'])->name('users.storeFundId');
+Route::get('/funds/createUser/{id}', [UsersController::class, 'createUserInFund'])->name('users.storeFundId');
 //route to show fund members
-Route::get('users/showMembers/{id}', [FundsController::class, 'showMembers'])->name('users.showMembers');
+Route::get('funds/showMembers/{id}', [FundsController::class, 'showMembers'])->name('users.showMembers');
 //route to show loan
-Route::get('users/showLoans/{id}', [LoansController::class, 'showLoans'])->name('users.showLoans');
+Route::get('funds/showLoans/{id}', [LoansController::class, 'showLoans'])->name('users.showLoans');
 
 
 
@@ -38,7 +38,7 @@ Route::get('/makeFund', function () {
 
 
 // Route to show all fund
-Route::get('/fund', [FundsController::class, 'index'])->name('showFunds');
+Route::get('/funds', [FundsController::class, 'index'])->name('showFunds');
 
 // Route to manage a specific fund
 Route::get('/fund/{id}', [FundsController::class, 'show'])->name('manageFund');
@@ -46,7 +46,7 @@ Route::get('/fund/{id}', [FundsController::class, 'show'])->name('manageFund');
 
 // Route to create a new fund
 Route::get('/fund/create', [FundsController::class, 'create'])->name('fund.create');
-Route::post('/fund', [FundsController::class, 'store'])->name('fund.store');
+Route::post('/funds', [FundsController::class, 'store'])->name('fund.store');
 
 //route for deleting fund
 Route::delete('fund/{id}' , [FundsController::class, 'destroy'])->name('deleteFund');
