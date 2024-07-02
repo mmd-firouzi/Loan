@@ -50,9 +50,10 @@ class LoansController extends Controller
     }
 
     public function showLoans($id) {
-        $loans = DB::table('loans')
-        ->where('fundId' , '=', $id)
-        ->paginate(10);
+#        $loans = DB::table('loans')
+#        ->where('fundId' , '=', $id)
+#        ->paginate(10);
+        $loans = Loan::where('fundID', $id)->paginate(10);
 
         return view('funds.showLoans', compact('loans'));
     }

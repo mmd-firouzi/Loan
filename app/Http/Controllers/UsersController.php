@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Users;
 use App\Models\Fund;
 use App\Models\User_Fund ;
+use function PHPUnit\Framework\throwException;
 
 class UsersController extends Controller
 {
@@ -18,7 +19,13 @@ class UsersController extends Controller
     public function createUserInFund($id)
     {
         $fund = Fund::find($id);
-        return view('createUser', compact('fund'));
+#        $max = $fund->max_member;
+#        $count = User_Fund::where('fundID' , $id)->count();
+#        if($count > $max){
+#            echo "cantttt";
+#        }
+#        else
+            return view('createUser', compact('fund'));
     }
 
 

@@ -65,28 +65,22 @@ class FundsController extends Controller
 
     public function destroy($id) {
 
-        // $fund = fund::find($id);
-        // if (Gate::denies('delete', $fund)) {
-        //     echo "You are not allowed to delete this fund.";
-        // }
-        // if ($fund) {
-        //     $fund->forceDelete();
-        //     return redirect()->route('showFunds')->with('success', 'Fund deleted successfully!');
-        // } else {
-        //     return redirect()->route('showFunds')->with('error', 'Fund not found.');
-        // }
 
-        DB::delete("DELETE FROM funds WHERE ID = :id", ['id' => $id]);
+        #DB::delete("DELETE FROM funds WHERE ID = :id", ['id' => $id]);
+        Fund::where('id', $id)->delete();
         return redirect()->route('showFunds')->with('success', 'Fund deleted successfully!');
     }
 
     public function showMembers($id) {
         $fund = Fund::findOrFail($id);
 
-        $users = DB::table('users')
-            ->join('User_Fund', 'users.id', '=', 'User_Fund.userID')
-            ->where('User_Fund.fundID', '=', $id)
-            ->paginate(3);  // Paginate the results with 5 users per page
+#        $users = DB::table('users')
+#            ->join('User_Fund', 'users.id', '=', 'User_Fund.userID')
+#            ->where('User_Fund.fundID', '=', $id)
+#            ->paginate(3);  // Paginate the results with 5 users per page
+       $users = Users::join('User_Fund', 'users.id', '=', 'User_Fund.userID')
+           ->where('User_Fund.fundID', '=', $id)
+           ->paginate(3);
 
         return view('funds.showMembers', compact('users', 'fund'));
     }
